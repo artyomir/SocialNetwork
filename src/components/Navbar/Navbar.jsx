@@ -7,7 +7,7 @@ const Navbar = () => {
       <div className={navbarStyles.item}>
         <a>Profile</a>
       </div>
-      <div className={`${navbarStyles.item} ${navbarStyles.active}`}>
+      <div className={`${navbarStyles.item} navbarStyles.active}`}>
         <a>Messages</a>
       </div>
       <div className={navbarStyles.item}>

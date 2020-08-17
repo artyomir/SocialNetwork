@@ -1,5 +1,5 @@
 import React from 'react';
-import { logoWeed } from '../pictures';
+import { logoWeed } from '../../pictures';
 import headerStyles from './Header.module.css';
 
 const Header = () => {
