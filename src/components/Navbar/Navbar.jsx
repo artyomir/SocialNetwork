@@ -5,16 +5,16 @@ const Navbar = () => {
   return (
     <nav className={navbarStyles.nav}>
       <div className={navbarStyles.item}>
-        <a>Profile</a>
+        <a href="/profile">Profile</a>
       </div>
       <div className={`${navbarStyles.item} navbarStyles.active}`}>
-        <a>Messages</a>
+        <a href="/messages">Messages</a>
       </div>
       <div className={navbarStyles.item}>
-        <a>News</a>
+        <a href="/news">News</a>
       </div>
       <div className={navbarStyles.item}>
-        <a>Music</a>
+        <a href="music">Music</a>
       </div>
     </nav>
   );

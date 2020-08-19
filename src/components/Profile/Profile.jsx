@@ -5,7 +5,7 @@ import PostBar from './PostBar/PostBar';
 
 const Profile = () => {
   return (
-    <div className={profileStyles.content}>
+    <div>
       <img src={logoHead} />
       <div>ava + description</div>
       <PostBar></PostBar>

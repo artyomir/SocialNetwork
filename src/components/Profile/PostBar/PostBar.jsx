@@ -6,7 +6,7 @@ const PostBar = () => {
   return (
     <div className={profileStyles.postbar}>
       My posts
-      <Post></Post>
+      <Post message="Hi! How are u?"></Post>
     </div>
   );
 };
