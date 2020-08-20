@@ -6,7 +6,8 @@ const PostBar = () => {
   return (
     <div className={profileStyles.postbar}>
       My posts
-      <Post message="Hi! How are u?"></Post>
+      <Post likeAmount={19} message="Hi! How are u?"></Post>
+      <Post message="Get the fuck out from here!" likeAmount="666"></Post>
     </div>
   );
 };

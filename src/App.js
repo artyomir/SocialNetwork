@@ -6,6 +6,7 @@ import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
 import { Route, BrowserRouter } from 'react-router-dom';
+import News from './components/News/News';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <div className="app-wrapper-content">
           <Route path="/messages" component={Dialogs} />
           <Route path="/profile" component={Profile} />
+          <Route path="/news" component={News} />
         </div>
       </div>
     </BrowserRouter>

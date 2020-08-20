@@ -5,10 +5,12 @@ import PostBar from './PostBar/PostBar';
 
 const Profile = () => {
   return (
-    <div>
+    <div className={profileStyles.head}>
       <img src={logoHead} />
       <div>ava + description</div>
-      <PostBar></PostBar>
+      <div className={profileStyles.item}>
+        <PostBar></PostBar>
+      </div>
     </div>
   );
 };
