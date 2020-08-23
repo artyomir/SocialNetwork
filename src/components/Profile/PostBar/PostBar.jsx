@@ -2,6 +2,15 @@ import React from 'react';
 import profileStyles from './PostBar.module.css';
 import Post from './Post/Post';
 
+const postData = [
+  { message: 'Hi! How are u?', likeAmount: '49' },
+  { message: 'get the fuck out from here! hahah', likeAmount: '52' },
+];
+
+const postJSXArray = postData.map((p) => (
+  <Post likeAmount={p.likeAmount} message={p.message} />
+));
+
 const PostBar = () => {
   return (
     <div className={profileStyles.postbar}>
@@ -14,10 +23,7 @@ const PostBar = () => {
           <button>Add post</button>
         </div>
       </div>
-      <div className={profileStyles.posts}>
-        <Post likeAmount={19} message="Hi! How are u?"></Post>
-        <Post message="Get the fuck out from here!" likeAmount="666"></Post>
-      </div>
+      <div className={profileStyles.posts}>{postJSXArray}</div>
     </div>
   );
 };

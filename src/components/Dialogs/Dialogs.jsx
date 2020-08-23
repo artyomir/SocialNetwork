@@ -18,18 +18,31 @@ const Message = (props) => {
   return <div className={dialogStyles.message}>{props.message}</div>;
 };
 
+const messages = [
+  { message: 'Hello' },
+  { message: 'How are u?' },
+  { message: 'go smoking WEEEEEED))))' },
+  { message: 'hahahahhahahaha' },
+];
+
+const dialogs = [
+  { userName: 'Ashot', id: '1' },
+  { userName: 'Buktop', id: '2' },
+  { userName: 'Luk', id: '3' },
+];
 const Dialogs = (props) => {
   return (
     <div className={dialogStyles.dialogsMain}>
       <div className={dialogStyles.dialogs}>
-        <DialogItem id="1" userName="Ashot" />
-        <DialogItem id="2" userName="Buktop" />
-        <DialogItem id="3" userName="Luk" />
+        <DialogItem id={dialogs[0].id} userName={dialogs[0].userName} />
+        <DialogItem id={dialogs[1].id} userName={dialogs[1].userName} />
+        <DialogItem id={dialogs[2].id} userName={dialogs[2].userName} />
       </div>
       <div className={dialogStyles.corresp}>
-        <Message message="Hello!" />
-        <Message message="ho are u?" />
-        <Message message="go smoking WEEEEEED))))" />
+        <Message message={messages[0].message} />
+        <Message message={messages[1].message} />
+        <Message message={messages[2].message} />
+        <Message message={messages[3].message} />
       </div>
     </div>
   );
