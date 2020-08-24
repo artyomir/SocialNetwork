@@ -1,49 +1,28 @@
 import React from 'react';
 import dialogStyles from './Dialogs.module.css';
-import { NavLink } from 'react-router-dom';
+import DialogItem from './DialogItem/DialogItem';
+import Message from './Message/Message';
 
-const DialogItem = (props) => {
-  let path = '/messages/';
-
-  return (
-    <div className={dialogStyles.item}>
-      <NavLink to={path + props.id} activeClassName={dialogStyles.active}>
-        {props.userName}
-      </NavLink>
-    </div>
-  );
-};
-
-const Message = (props) => {
-  return <div className={dialogStyles.message}>{props.message}</div>;
-};
-
-const messages = [
-  { message: 'Hello' },
-  { message: 'How are u?' },
-  { message: 'go smoking WEEEEEED))))' },
-  { message: 'hahahahhahahaha' },
-];
-
-const dialogs = [
-  { userName: 'Ashot', id: '1' },
-  { userName: 'Buktop', id: '2' },
-  { userName: 'Luk', id: '3' },
-];
 const Dialogs = (props) => {
+  const dialogJSXArray = props.state.dialogsData.map((d) => (
+    <DialogItem id={d.id} userName={d.userName} />
+  ));
+
+  const messagesJSXArray = props.state.messagesData.map((m) => (
+    <Message message={m.message} />
+  ));
+  // const dialogJSXArray = props.dialogsData.map((d) => (
+  //   <DialogItem id={d.id} userName={d.userName} />
+  // ));
+
+  // const messagesJSXArray = props.messagesData.map((m) => (
+  //   <Message message={m.message} />
+  // ));
+
   return (
     <div className={dialogStyles.dialogsMain}>
-      <div className={dialogStyles.dialogs}>
-        <DialogItem id={dialogs[0].id} userName={dialogs[0].userName} />
-        <DialogItem id={dialogs[1].id} userName={dialogs[1].userName} />
-        <DialogItem id={dialogs[2].id} userName={dialogs[2].userName} />
-      </div>
-      <div className={dialogStyles.corresp}>
-        <Message message={messages[0].message} />
-        <Message message={messages[1].message} />
-        <Message message={messages[2].message} />
-        <Message message={messages[3].message} />
-      </div>
+      <div className={dialogStyles.dialogs}>{dialogJSXArray}</div>
+      <div className={dialogStyles.corresp}>{messagesJSXArray}</div>
     </div>
   );
 };

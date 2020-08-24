@@ -1,12 +1,12 @@
 import React from 'react';
 import postStyles from './Post.module.css';
-import { postAvatar } from '../../../../pictures';
+// import { postAvatar } from '../../../../pictures';
 
 const Post = (props) => {
-  debugger;
+  // debugger;
   return (
     <div className={postStyles.item}>
-      <img src={postAvatar} />
+      <img src={props.postAvatar} />
       {props.message}
       <div>
         <span>Like</span>
