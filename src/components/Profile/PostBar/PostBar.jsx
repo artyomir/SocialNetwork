@@ -11,15 +11,30 @@ const PostBar = (props) => {
     />
   ));
 
+  const newPost = React.createRef();
+
+  const addPost = () => {
+    props.addPost();
+  };
+
+  const cnhagePostText = () => {
+    let text = newPost.current.value;
+    props.postChange(text);
+  };
+
   return (
     <div className={profileStyles.postbar}>
       <h3>My posts</h3>
       <div>
         <div>
-          <textarea></textarea>
+          <textarea
+            ref={newPost}
+            onChange={cnhagePostText}
+            value={props.newPostText}
+          ></textarea>
         </div>
         <div>
-          <button>Add post</button>
+          <button onClick={addPost}>Add post</button>
         </div>
       </div>
       <div className={profileStyles.posts}>{postJSXArray}</div>

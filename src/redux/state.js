@@ -1,4 +1,24 @@
 import { newsAvatar, postAvatar } from '../pictures';
+import renderEntireTree from '../render';
+
+export const addPost = () => {
+  if (!state.profilePage.newPostText) {
+    return;
+  }
+  const post = {
+    message: state.profilePage.newPostText,
+    likeAmount: '0',
+    postAvatar: postAvatar,
+  };
+  state.profilePage.postData.push(post);
+  state.profilePage.newPostText = '';
+  renderEntireTree(state, addPost, postChange);
+};
+
+export const postChange = (text) => {
+  state.profilePage.newPostText = text;
+  renderEntireTree(state, addPost, postChange);
+};
 
 const state = {
   profilePage: {
@@ -15,6 +35,7 @@ const state = {
         postAvatar: postAvatar,
       },
     ],
+    newPostText: '',
   },
   newsPage: {
     newsData: [
