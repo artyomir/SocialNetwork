@@ -5,7 +5,7 @@ import Message from './Message/Message';
 import {
   sendMessageActionCreator,
   changeMessageActionCreator,
-} from '../../redux/state';
+} from '../../redux/dialogsReducer';
 
 const Dialogs = (props) => {
   const dialogJSXArray = props.state.dialogsData.map((d) => (

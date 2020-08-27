@@ -2,9 +2,9 @@ import React from 'react';
 import profileStyles from './PostBar.module.css';
 import Post from './Post/Post';
 import {
-  addPostActionCreator,
   changePostTextActionCreator,
-} from '../../../redux/state';
+  addPostActionCreator,
+} from '../../../redux/profileReducer';
 
 const PostBar = (props) => {
   const postJSXArray = props.postData.map((p) => (

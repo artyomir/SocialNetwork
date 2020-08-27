@@ -1,7 +1,7 @@
 import { newsAvatar, postAvatar } from '../pictures';
+import profileReducer from './profileReducer';
+import dialogsReducer from './dialogsReducer';
 
-const ADD_POST = 'ADD-POST';
-const POST_CHANGE = 'POST-CHANGE';
 const MESSAGE_CHANGE = 'MESSAGE-CHANGE';
 const SEND_MESSAGE = 'SEND-MESSAGE';
 
@@ -98,60 +98,11 @@ const store = {
   },
 
   dispatch(action) {
-    if (action.type === ADD_POST) {
-      if (!this._state.profilePage.newPostText) {
-        return;
-      }
-      const post = {
-        message: this._state.profilePage.newPostText,
-        likeAmount: '0',
-        postAvatar: postAvatar,
-      };
-      this._state.profilePage.postData.push(post);
-      this._state.profilePage.newPostText = '';
-      this._callSubscriber(this.getState());
-    } else if (action.type === POST_CHANGE) {
-      this._state.profilePage.newPostText = action.text;
-      this._callSubscriber(this.getState());
-    } else if (action.type === SEND_MESSAGE) {
-      if (!this._state.dialogsPage.newMessageText) {
-        return;
-      }
-      const newMessage = { message: this._state.dialogsPage.newMessageText };
-      this._state.dialogsPage.messagesData.push(newMessage);
-      this._state.dialogsPage.newMessageText = '';
-      this._callSubscriber(this.getState());
-    } else if (action.type === MESSAGE_CHANGE) {
-      this._state.dialogsPage.newMessageText = action.text;
-      this._callSubscriber(this.getState());
-    }
+    debugger;
+    profileReducer(this.getState().profilePage, action);
+    dialogsReducer(this.getState().dialogsPage, action);
+    this._callSubscriber(this.getState());
   },
-};
-
-export const changePostTextActionCreator = (text) => {
-  return {
-    type: POST_CHANGE,
-    text: text,
-  };
-};
-
-export const sendMessageActionCreator = () => {
-  return {
-    type: SEND_MESSAGE,
-  };
-};
-
-export const changeMessageActionCreator = (text) => {
-  return {
-    type: MESSAGE_CHANGE,
-    text: text,
-  };
-};
-
-export const addPostActionCreator = () => {
-  return {
-    type: ADD_POST,
-  };
 };
 
 window.store = store;
