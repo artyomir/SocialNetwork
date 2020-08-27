@@ -1,6 +1,10 @@
 import React from 'react';
 import profileStyles from './PostBar.module.css';
 import Post from './Post/Post';
+import {
+  addPostActionCreator,
+  changePostTextActionCreator,
+} from '../../../redux/state';
 
 const PostBar = (props) => {
   const postJSXArray = props.postData.map((p) => (
@@ -14,12 +18,12 @@ const PostBar = (props) => {
   const newPost = React.createRef();
 
   const addPost = () => {
-    props.addPost();
+    props.dispatch(addPostActionCreator());
   };
 
   const cnhagePostText = () => {
     let text = newPost.current.value;
-    props.postChange(text);
+    props.dispatch(changePostTextActionCreator(text));
   };
 
   return (

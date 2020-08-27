@@ -11,8 +11,7 @@ const Profile = (props) => {
         <PostBar
           postData={props.state.postData}
           newPostText={props.state.newPostText}
-          addPost={props.addPost}
-          postChange={props.postChange}
+          dispatch={props.dispatch}
         ></PostBar>
       </div>
     </div>
