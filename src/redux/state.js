@@ -2,6 +2,8 @@ import { newsAvatar, postAvatar } from '../pictures';
 
 const ADD_POST = 'ADD-POST';
 const POST_CHANGE = 'POST-CHANGE';
+const MESSAGE_CHANGE = 'MESSAGE-CHANGE';
+const SEND_MESSAGE = 'SEND-MESSAGE';
 
 const store = {
   _state: {
@@ -57,6 +59,8 @@ const store = {
         { message: 'go smoking WEEEEEED mafaka))))' },
         { message: 'hahahahahh' },
       ],
+
+      newMessageText: '',
     },
     sideBar: {},
     musicPage: {},
@@ -109,6 +113,17 @@ const store = {
     } else if (action.type === POST_CHANGE) {
       this._state.profilePage.newPostText = action.text;
       this._callSubscriber(this.getState());
+    } else if (action.type === SEND_MESSAGE) {
+      if (!this._state.dialogsPage.newMessageText) {
+        return;
+      }
+      const newMessage = { message: this._state.dialogsPage.newMessageText };
+      this._state.dialogsPage.messagesData.push(newMessage);
+      this._state.dialogsPage.newMessageText = '';
+      this._callSubscriber(this.getState());
+    } else if (action.type === MESSAGE_CHANGE) {
+      this._state.dialogsPage.newMessageText = action.text;
+      this._callSubscriber(this.getState());
     }
   },
 };
@@ -116,6 +131,19 @@ const store = {
 export const changePostTextActionCreator = (text) => {
   return {
     type: POST_CHANGE,
+    text: text,
+  };
+};
+
+export const sendMessageActionCreator = () => {
+  return {
+    type: SEND_MESSAGE,
+  };
+};
+
+export const changeMessageActionCreator = (text) => {
+  return {
+    type: MESSAGE_CHANGE,
     text: text,
   };
 };
