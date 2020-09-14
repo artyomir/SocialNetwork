@@ -7,6 +7,7 @@ import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
 import { Route } from 'react-router-dom';
 import News from './components/News/News';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 
 // const renderDialog = (props) => {
 //   return <Dialogs dialogsData={props.dialogsData} />;
@@ -20,22 +21,9 @@ const App = (props) => {
       <div className="app-wrapper-content">
         <Route
           path="/messages"
-          render={() => (
-            <Dialogs
-              state={props.state.dialogsPage}
-              dispatch={props.dispatch}
-            />
-          )}
+          render={() => <DialogsContainer store={props.store} />}
         />
-        <Route
-          path="/profile"
-          render={() => (
-            <Profile
-              state={props.state.profilePage}
-              dispatch={props.dispatch}
-            />
-          )}
-        />
+        <Route path="/profile" render={() => <Profile store={props.store} />} />
         <Route
           path="/news"
           render={() => <News state={props.state.newsPage} />}

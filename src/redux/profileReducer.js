@@ -3,8 +3,24 @@ import { postAvatar } from '../pictures';
 const ADD_POST = 'ADD-POST';
 const POST_CHANGE = 'POST-CHANGE';
 
-const profileReducer = (state, action) => {
-  debugger;
+const localState = {
+  postData: [
+    { message: 'Hi! How are u?', likeAmount: '49', postAvatar: postAvatar },
+    {
+      message: 'get the fuck out from here! hahah',
+      likeAmount: '52',
+      postAvatar: postAvatar,
+    },
+    {
+      message: 'I AM FRONTEND DEVELOPER',
+      likeAmount: '99999+',
+      postAvatar: postAvatar,
+    },
+  ],
+  newPostText: '',
+};
+
+const profileReducer = (state = localState, action) => {
   switch (action.type) {
     case ADD_POST:
       if (!state.newPostText) {

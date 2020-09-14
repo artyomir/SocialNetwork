@@ -1,29 +1,16 @@
 import React from 'react';
 import profileStyles from './PostBar.module.css';
-import Post from './Post/Post';
-import {
-  changePostTextActionCreator,
-  addPostActionCreator,
-} from '../../../redux/profileReducer';
 
 const PostBar = (props) => {
-  const postJSXArray = props.postData.map((p) => (
-    <Post
-      likeAmount={p.likeAmount}
-      message={p.message}
-      postAvatar={p.postAvatar}
-    />
-  ));
-
   const newPost = React.createRef();
 
-  const addPost = () => {
-    props.dispatch(addPostActionCreator());
+  const onAddPost = () => {
+    props.addPost();
   };
 
-  const cnhagePostText = () => {
+  const onCnhagePostText = () => {
     let text = newPost.current.value;
-    props.dispatch(changePostTextActionCreator(text));
+    props.changePostText(text);
   };
 
   return (
@@ -33,15 +20,15 @@ const PostBar = (props) => {
         <div>
           <textarea
             ref={newPost}
-            onChange={cnhagePostText}
+            onChange={onCnhagePostText}
             value={props.newPostText}
           ></textarea>
         </div>
         <div>
-          <button onClick={addPost}>Add post</button>
+          <button onClick={onAddPost}>Add post</button>
         </div>
       </div>
-      <div className={profileStyles.posts}>{postJSXArray}</div>
+      <div className={profileStyles.posts}>{props.postJSXArray}</div>
     </div>
   );
 };
